@@ -1,0 +1,57 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+eggs/
+*.egg
+
+# Virtual Environment
+venv/
+.venv/
+env/
+ENV/
+
+# Environment Variables
+.env
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Data (large files)
+data/*.json
+data/*.csv
+data/*.pkl
+data/*.parquet
+!data/.gitkeep
+
+# Model artifacts
+*.bin
+*.pt
+*.pth
+*.onnx
+*.h5
+
+# Logs
+*.log
+logs/
+
+# ChromaDB / Vector DB local storage
+chroma_db/
+vector_store/
+*.index

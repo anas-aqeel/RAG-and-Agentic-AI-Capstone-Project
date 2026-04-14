@@ -1,0 +1,46 @@
+# ============================================
+# Core AI / LLM
+# ============================================
+anthropic[vertex]
+google-cloud-aiplatform
+google-genai
+
+# ============================================
+# LangChain & LangGraph
+# ============================================
+langchain
+langchain-community
+langchain-google-vertexai
+langchain-anthropic
+langgraph
+
+# ============================================
+# Vector Database & Embeddings
+# ============================================
+chromadb
+sentence-transformers
+
+# ============================================
+# Data Processing
+# ============================================
+pandas
+numpy
+pillow
+
+# ============================================
+# UI / Interface
+# ============================================
+gradio
+
+# ============================================
+# MCP (Model Context Protocol)
+# ============================================
+mcp
+
+# ============================================
+# Utilities
+# ============================================
+python-dotenv
+pydantic
+requests
+tqdm
