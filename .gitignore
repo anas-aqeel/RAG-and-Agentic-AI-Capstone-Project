@@ -55,3 +55,7 @@ logs/
 chroma_db/
 vector_store/
 *.index
+
+# Large dataset files
+*.zip
+synthetic_recipe_images/

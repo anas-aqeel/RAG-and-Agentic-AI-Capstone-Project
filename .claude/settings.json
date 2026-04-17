@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -sL \"https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/hpTjb6liKBLVHQK0UgMi5A/Recipes.json\" -o Recipes.json)",
+      "Bash(curl -sL \"https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/fQUs9wQ6aB6ts6fmkD2V2w/Synthetic-User-Reviews.json\" -o Synthetic-User-Reviews.json)",
+      "Bash(python -c \"import json; r=json.load\\(open\\('Recipes.json'\\)\\); print\\(f'Recipes: {len\\(r\\)}'\\); print\\(f'Keys: {list\\(r[0].keys\\(\\)\\)}'\\); print\\(f'Last recipe id: {r[-1][\\\\\"id\\\\\"]}, name: {r[-1][\\\\\"name\\\\\"]}'\\)\")"
+    ]
+  }
+}

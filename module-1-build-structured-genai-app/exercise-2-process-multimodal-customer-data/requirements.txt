@@ -1,0 +1,5 @@
+anthropic[vertex]
+python-dotenv
+Pillow
+requests
+tenacity
