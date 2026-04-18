@@ -1,0 +1,9 @@
+torch
+torchvision
+langchain==0.3.27
+langchain-community==0.3.31
+langchain-chroma==0.2.6
+sentence-transformers==2.7.0
+transformers
+pillow
+numpy
