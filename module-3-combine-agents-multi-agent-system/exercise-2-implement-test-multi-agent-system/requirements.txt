@@ -1,0 +1,5 @@
+anthropic[vertex]
+python-dotenv
+langchain==0.3.0
+langchain-community==0.3.0
+langgraph==0.2.0

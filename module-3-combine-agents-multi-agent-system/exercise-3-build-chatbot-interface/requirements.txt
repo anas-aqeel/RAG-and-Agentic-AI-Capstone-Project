@@ -1,0 +1,4 @@
+anthropic[vertex]
+python-dotenv
+gradio==4.29.0
+jinja2==3.1.4
