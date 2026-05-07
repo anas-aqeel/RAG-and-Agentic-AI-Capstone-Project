@@ -25,7 +25,8 @@ load_dotenv(dotenv_path="../../.env")
 # =============================================================================
 
 DATA_URL = "https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/1r_mM6ZPYNxcFv65QkzubA/California-Culinary-Map.txt"
-DATA_FILE = "California-Culinary-Map.txt"
+DATA_FILE = "data/California-Culinary-Map.txt"
+os.makedirs("data", exist_ok=True)
 
 if not os.path.exists(DATA_FILE):
     urllib.request.urlretrieve(DATA_URL, DATA_FILE)
@@ -205,7 +206,7 @@ structured_json = [json.loads(r) for r in structured_restaurant_lists]
 for i, item in enumerate(structured_json):
     item["itemId"] = 1000001 + i
 
-with open("structured_restaurant_data.json", "w", encoding="utf-8") as f:
+with open("data/structured_restaurant_data.json", "w", encoding="utf-8") as f:
     json.dump(structured_json, f, indent=4)
 
-print(f"\nSaved {len(structured_json)} restaurants to structured_restaurant_data.json")
+print(f"\nSaved {len(structured_json)} restaurants to data/structured_restaurant_data.json")

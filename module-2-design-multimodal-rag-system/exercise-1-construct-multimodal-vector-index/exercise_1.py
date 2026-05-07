@@ -8,13 +8,15 @@ No LLM API calls — all models run locally.
 
 Usage:
     1. pip install -r requirements.txt
-    2. Place structured_restaurant_data.json and augmented_food_recipe.json
-       in this directory (outputs from Module 1)
+    2. Run Module 1 Exercise 1 and Exercise 2 first to produce the upstream
+       data files. The script then auto-copies them from those locations into
+       this exercise's local `data/` folder. You can also drop them in `data/`
+       manually.
     3. python exercise_1.py
 
 Dependencies from Module 1:
-    - structured_restaurant_data.json  (Exercise 1 output)
-    - augmented_food_recipe.json       (Exercise 2 output)
+    - data/structured_restaurant_data.json  (Module 1 Exercise 1 output)
+    - data/augmented_food_recipe.json       (Module 1 Exercise 2 output)
 """
 
 import glob
@@ -38,28 +40,32 @@ from transformers import CLIPModel, CLIPProcessor
 # Step 0: Resolve data files from Module 1
 # =============================================================================
 
-M1_EX1_DIR = "../module-1-build-structured-genai-app/exercise-1-structure-text-data-with-llms"
-M1_EX2_DIR = "../../module-1-build-structured-genai-app/exercise-2-process-multimodal-customer-data"
+DATA_DIR = "data"
+os.makedirs(DATA_DIR, exist_ok=True)
 
-RESTAURANT_FILE = "structured_restaurant_data.json"
-RECIPE_FILE = "augmented_food_recipe.json"
+M1_EX1_DATA = "../../module-1-build-structured-genai-app/exercise-1-structure-text-data-with-llms/data"
+M1_EX2_DATA = "../../module-1-build-structured-genai-app/exercise-2-process-multimodal-customer-data/data"
+
+RESTAURANT_FILE = os.path.join(DATA_DIR, "structured_restaurant_data.json")
+RECIPE_FILE = os.path.join(DATA_DIR, "augmented_food_recipe.json")
 
 
-def resolve_data_file(filename, search_dirs):
-    """Find a data file in the current dir or Module 1 directories."""
-    if os.path.exists(filename):
-        return filename
-    for d in search_dirs:
+def resolve_data_file(local_path, source_dirs):
+    """Find a data file locally or copy it from upstream Module 1 data dirs."""
+    if os.path.exists(local_path):
+        return local_path
+    filename = os.path.basename(local_path)
+    for d in source_dirs:
         candidate = os.path.join(d, filename)
         if os.path.exists(candidate):
-            shutil.copy(candidate, filename)
+            shutil.copy(candidate, local_path)
             print(f"  Copied {filename} from {d}")
-            return filename
+            return local_path
     return None
 
 
-restaurant_path = resolve_data_file(RESTAURANT_FILE, [M1_EX1_DIR, M1_EX2_DIR])
-recipe_path = resolve_data_file(RECIPE_FILE, [M1_EX2_DIR])
+restaurant_path = resolve_data_file(RESTAURANT_FILE, [M1_EX1_DATA, M1_EX2_DATA])
+recipe_path = resolve_data_file(RECIPE_FILE, [M1_EX2_DATA])
 
 if not restaurant_path:
     print(f"ERROR: {RESTAURANT_FILE} not found. Place it in this directory (output from Module 1, Exercise 1).")
@@ -74,8 +80,8 @@ if not recipe_path:
 # =============================================================================
 
 ZIP_URL = "https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/5_Rr6ohviItzucyWk6nkrw/synthetic-recipe-images.zip"
-ZIP_PATH = "synthetic-recipe-images.zip"
-IMG_DIR = "recipe_images"
+ZIP_PATH = os.path.join(DATA_DIR, "synthetic-recipe-images.zip")
+IMG_DIR = os.path.join(DATA_DIR, "recipe_images")
 
 if not os.path.exists(IMG_DIR):
     if not os.path.exists(ZIP_PATH):

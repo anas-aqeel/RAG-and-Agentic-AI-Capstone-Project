@@ -33,12 +33,14 @@ desktop.ini
 # Jupyter
 .ipynb_checkpoints/
 
-# Data (large files)
-data/*.json
-data/*.csv
-data/*.pkl
-data/*.parquet
-!data/.gitkeep
+# Build artifacts the user doesn't track
+outputs/
+**/__pycache__/
+
+# Per-exercise generated data files (Recipes.json + augmented_*.json are
+# inputs/outputs, large). Track them by name explicitly if needed.
+**/data/*.pkl
+**/data/*.parquet
 
 # Model artifacts
 *.bin

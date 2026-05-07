@@ -26,8 +26,9 @@ from unittest.mock import patch
 
 load_dotenv(dotenv_path="../../.env")
 
-FILEPATH = "structured_restaurant_data.json"
-BACKUP_PATH = "structured_restaurant_data.json.bak"
+os.makedirs("data", exist_ok=True)
+FILEPATH = "data/structured_restaurant_data.json"
+BACKUP_PATH = "data/structured_restaurant_data.json.bak"
 
 EXAMPLE_RESTAURANT_PARAGRAPH = (
     "Down in **Santa Monica**, **Mar de Cortez** serves as a **sun-drenched**, "
@@ -294,8 +295,8 @@ class TestRestaurantDatabase(unittest.TestCase):
 
     def setUp(self):
         """Create a temporary clean database for testing."""
-        self.test_file = "structured_restaurant_data_unit_test.json"
-        self.test_file_backup = "structured_restaurant_data_unit_test.json.bak"
+        self.test_file = "data/structured_restaurant_data_unit_test.json"
+        self.test_file_backup = "data/structured_restaurant_data_unit_test.json.bak"
         self.initial_data = [{"name": "Test Cafe", "location": "Test City"}]
         with open(self.test_file, "w") as f:
             json.dump(self.initial_data, f)

@@ -39,10 +39,12 @@ RECIPES_URL = "https://cf-courses-data.s3.us.cloud-object-storage.appdomain.clou
 REVIEWS_URL = "https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/fQUs9wQ6aB6ts6fmkD2V2w/Synthetic-User-Reviews.json"
 IMAGES_ZIP_URL = "https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/5_Rr6ohviItzucyWk6nkrw/synthetic-recipe-images.zip"
 
-RECIPES_FILE = "Recipes.json"
-REVIEWS_FILE = "Synthetic-User-Reviews.json"
-IMAGES_ZIP = "synthetic-recipe-images.zip"
-IMAGES_DIR = "synthetic_recipe_images"
+DATA_DIR = "data"
+RECIPES_FILE = os.path.join(DATA_DIR, "Recipes.json")
+REVIEWS_FILE = os.path.join(DATA_DIR, "Synthetic-User-Reviews.json")
+IMAGES_ZIP = os.path.join(DATA_DIR, "synthetic-recipe-images.zip")
+IMAGES_DIR = os.path.join(DATA_DIR, "synthetic_recipe_images")
+os.makedirs(DATA_DIR, exist_ok=True)
 
 
 # =============================================================================
@@ -62,7 +64,7 @@ download_if_missing(IMAGES_ZIP_URL, IMAGES_ZIP)
 if not os.path.exists(IMAGES_DIR):
     print("Extracting recipe images...")
     with zipfile.ZipFile(IMAGES_ZIP, "r") as zf:
-        zf.extractall()
+        zf.extractall(DATA_DIR)
     print(f"  -> Extracted to {IMAGES_DIR}/")
 
 
@@ -224,9 +226,9 @@ for i, recipe in enumerate(recipe_data):
 print(f"ALL DONE! Captioned {len(recipe_data)} recipes.")
 
 # Save augmented recipe data
-with open("augmented_food_recipe.json", "w", encoding="utf-8") as f:
+with open(os.path.join(DATA_DIR, "augmented_food_recipe.json"), "w", encoding="utf-8") as f:
     json.dump(recipe_data, f, indent=4)
-print("Saved augmented_food_recipe.json")
+print("Saved data/augmented_food_recipe.json")
 
 
 # =============================================================================
@@ -266,9 +268,9 @@ for i, review in enumerate(user_review_data):
 print(f"ALL DONE! Processed {len(user_review_data)} reviews.")
 
 # Save augmented review data
-with open("augmented_user_review.json", "w", encoding="utf-8") as f:
+with open(os.path.join(DATA_DIR, "augmented_user_review.json"), "w", encoding="utf-8") as f:
     json.dump(user_review_data, f, indent=4)
-print("Saved augmented_user_review.json")
+print("Saved data/augmented_user_review.json")
 
 
 # =============================================================================
@@ -279,5 +281,5 @@ print("\n=== Summary ===")
 print(f"Recipes with captions: {sum(1 for r in recipe_data if r.get('image_description'))}")
 print(f"Reviews with image captions: {sum(1 for r in user_review_data if r.get('image_captions'))}")
 print("\nOutput files:")
-print("  - augmented_food_recipe.json")
-print("  - augmented_user_review.json")
+print("  - data/augmented_food_recipe.json")
+print("  - data/augmented_user_review.json")

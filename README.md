@@ -17,36 +17,67 @@ This capstone project demonstrates end-to-end AI system design — from structur
 
 ```
 Capstone-Project/
+├── README.md                          # This file
+├── CLAUDE.md                          # AI assistant context
+├── requirements.txt                   # Top-level Python dependencies
+├── .env.example                       # Environment variable template
+│
+├── docs/                              # All preparation / study notes
+│   ├── module-1-preparation.{md,html}
+│   ├── module-2-preparation.{md,html}
+│   ├── module-3-preparation.{md,html}
+│   └── module-4-preparation.{md,html}
+│
+├── final-submission/                  # Capstone deliverable gallery
+│   ├── questions/                     # 12 IBM-provided question screenshots
+│   └── answers/                       # 12 user-generated answer screenshots
+│
+├── shared/                            # Shared utilities across exercises
+│
 ├── module-1-build-structured-genai-app/
+│   ├── README.md                      # Module overview + exercise table
+│   ├── lab-source/                    # IBM-provided lab notebooks
 │   ├── exercise-1-structure-text-data-with-llms/
 │   ├── exercise-2-process-multimodal-customer-data/
 │   └── exercise-3-build-command-line-data-management-ui/
 │
-├── module-2-design-multimodal-rag-system/
-│   ├── exercise-1-construct-multimodal-vector-index/
-│   ├── exercise-2-similarity-retrieval-with-metadata-filtering/
-│   └── exercise-3-multimodal-similarity-fusion-and-ranking/
-│
-├── module-3-combine-agents-multi-agent-system/
-│   ├── exercise-1-design-specialized-agents/
-│   ├── exercise-2-implement-test-multi-agent-system/
-│   └── exercise-3-build-chatbot-interface/
-│
-├── module-4-integrate-agents-rag-tools-mcp/
-│   ├── exercise-1-build-mcp-server/
-│   ├── exercise-2-build-mcp-client/
-│   └── exercise-3-build-full-mcp-application/
-│
-├── module-5-final-project/
-│   └── final-submission/
-│
-├── data/                    # Datasets (gitignored, large files)
-├── shared/                  # Shared utilities across modules
-├── .env.example             # Environment variable template
-├── requirements.txt         # Python dependencies
-├── CLAUDE.md                # AI assistant context file
-└── README.md                # This file
+├── module-2-design-multimodal-rag-system/         # (same shape as Module 1)
+├── module-3-combine-agents-multi-agent-system/    # (same shape)
+├── module-4-integrate-agents-rag-tools-mcp/       # lab-source contains PDFs (not notebooks)
+└── module-5-final-project/                        # Submission checklist only
 ```
+
+**Every exercise folder follows the same template:**
+
+```
+exercise-N-name/
+├── exercise_N.py                      # Local Vertex AI implementation
+├── requirements.txt                   # Pinned dependencies
+├── data/                              # Input/output files (omitted if none)
+└── submission/
+    ├── exercise_N_submission.ipynb    # IBM-format submission notebook
+    └── screenshots/                   # Answer screenshots for grading
+```
+
+## Where things live
+
+- **Course material that came from IBM** lives in `module-N-.../lab-source/` (notebooks for Modules 1–3, PDFs for Module 4).
+- **The user's local Claude/Vertex implementations** live at the exercise root (`exercise_N.py`) and read/write `./data/`.
+- **The user's IBM-format submissions** live in `module-N-.../exercise-N-.../submission/` and use the lab's default in-cwd paths (so they run unchanged in IBM's grader).
+- **Preparation/study docs** for every module live in [`docs/`](docs/) — both Markdown source and rendered HTML.
+- **The final capstone deliverable** (12 question + 12 answer screenshots) is consolidated in [`final-submission/`](final-submission/).
+
+## Reuse this template
+
+To fork this layout for a different course:
+
+1. Replace the `module-N-...` folder names with your own course's modules.
+2. Replace each exercise's `exercise_N.py` with your implementation; keep the `data/` + `submission/` shape.
+3. Drop your lab notebooks/PDFs into `module-N-.../lab-source/`.
+4. Write your prep docs as Markdown files in `docs/` and run [`.scripts/md_to_docs_html.py`](.scripts/md_to_docs_html.py) to render them to styled HTML.
+5. Update this README and each module's README with your topics.
+
+The structure intentionally separates **provided material** (lab-source/) from **your work** (exercise root + submission/) so that a fork can be cleaned and reused without confusion about who wrote what.
 
 ---
 

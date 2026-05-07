@@ -18,6 +18,7 @@ from pathlib import Path
 import markdown
 
 PROJECT = Path(r"c:\Users\LENOVO\OneDrive\Desktop\Capstone Project")
+DOCS = PROJECT / "docs"
 
 MODULES = [
     {
@@ -25,8 +26,8 @@ MODULES = [
         "subtitle": "Structured GenAI",
         "title": "Module 1 — Interview Preparation & Deep Dive",
         "lede": "Using LLMs to transform unstructured data into structured JSON, validating outputs, building a CLI application, and testing LLM-dependent code.",
-        "md": PROJECT / "module-1-build-structured-genai-app" / "MODULE_1_PREPARATION.md",
-        "out": PROJECT / "module-1-build-structured-genai-app" / "MODULE_1_PREPARATION.html",
+        "md": DOCS / "module-1-preparation.md",
+        "out": DOCS / "module-1-preparation.html",
         "accent": "#c96442",        # warm amber
         "accent_soft": "#f9ebe4",
         "tag": "Structured Data · LLMs",
@@ -36,8 +37,8 @@ MODULES = [
         "subtitle": "Multimodal RAG",
         "title": "Module 2 — Interview Preparation & Deep Dive",
         "lede": "Building a multimodal RAG retrieval layer — embedding text and images into vector spaces, persisting them in ChromaDB, performing similarity search with metadata filtering, and fusing multi-modal results into a single ranked list.",
-        "md": PROJECT / "module-2-design-multimodal-rag-system" / "MODULE_2_PREPARATION.md",
-        "out": PROJECT / "module-2-design-multimodal-rag-system" / "MODULE_2_PREPARATION.html",
+        "md": DOCS / "module-2-preparation.md",
+        "out": DOCS / "module-2-preparation.html",
         "accent": "#0d7d7e",        # teal
         "accent_soft": "#dff1f1",
         "tag": "Vector Search · CLIP · ChromaDB",
@@ -47,19 +48,19 @@ MODULES = [
         "subtitle": "Multi-Agent Systems",
         "title": "Module 3 — Interview Preparation & Deep Dive",
         "lede": "Designing specialized AI agents, orchestrating them into multi-agent workflows (sequential + parallel hybrid), managing shared state, and exposing the system through a Gradio chatbot with intent classification and preference extraction.",
-        "md": PROJECT / "module-3-combine-agents-multi-agent-system" / "MODULE_3_PREPARATION.md",
-        "out": PROJECT / "module-3-combine-agents-multi-agent-system" / "MODULE_3_PREPARATION.html",
+        "md": DOCS / "module-3-preparation.md",
+        "out": DOCS / "module-3-preparation.html",
         "accent": "#6f42c1",        # purple
         "accent_soft": "#efe6f9",
         "tag": "Agents · LangGraph · Gradio",
     },
     {
-        "label": "Module 5",
+        "label": "Module 4",
         "subtitle": "Model Context Protocol",
-        "title": "Module 5 — Interview Preparation & Deep Dive (MCP)",
+        "title": "Module 4 — Interview Preparation & Deep Dive (MCP)",
         "lede": "Building a complete Model Context Protocol (MCP) system — a FastMCP server exposing data and tools, a Python MCP client connecting over stdio with roots and sampling callbacks, and a full host application using a ReAct agent loop with a Gradio chat UI.",
-        "md": PROJECT / "module-5-final-project" / "MODULE_5_PREPARATION.md",
-        "out": PROJECT / "module-5-final-project" / "MODULE_5_PREPARATION.html",
+        "md": DOCS / "module-4-preparation.md",
+        "out": DOCS / "module-4-preparation.html",
         "accent": "#0f766e",        # emerald-deep
         "accent_soft": "#daf0ed",
         "tag": "MCP · FastMCP · ReAct",

@@ -1,4 +1,4 @@
-# Module 5 — Interview Preparation & Deep Dive (MCP)
+# Module 4 — Interview Preparation & Deep Dive (MCP)
 
 > **What this module covered:** Building a complete Model Context Protocol (MCP) system — a FastMCP server exposing data and tools, a Python MCP client connecting over stdio with roots and sampling callbacks, and a full host application using a ReAct agent loop with a Gradio chat UI.
 
